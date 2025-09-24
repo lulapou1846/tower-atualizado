@@ -3,6 +3,16 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { Toaster } from "react-hot-toast"
 import { useAuth } from "./hooks/useAuth"
 
+import { CategoriasProvider } from "./components/CategoriasContext";
+
+function Root() {
+  return (
+    <CategoriasProvider>
+      <App /> {/* seu Router / Dashboard */}
+    </CategoriasProvider>
+  );
+}
+
 import LoginPage from "./components/LoginPage"
 import RegisterPage from "./components/RegisterPage"
 import Sidebar from "./components/Sidebar"
@@ -24,7 +34,7 @@ function App() {
   }
 
   return (
-    <>
+    <CategoriasProvider>
       <Toaster
         position="top-right"
         toastOptions={{
@@ -89,7 +99,7 @@ function App() {
           </Routes>
         </div>
       </Router>
-    </>
+    </CategoriasProvider>
   )
 }
 
